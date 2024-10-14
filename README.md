@@ -13,7 +13,10 @@ Modelar e diagramar a representação UML do componente iPhone, abrangendo suas 
 
 #### Funcionalidades a Modelar
 1. **Reprodutor Musical**
-	@@ -24,41 +19,40 @@ Com base no vídeo de lançamento do iPhone de 2007 (link abaixo), você deve el
+   - Métodos: `tocar()`, `pausar()`, `selecionarMusica(String musica)`
+2. **Aparelho Telefônico**
+   - Métodos: `ligar(String numero)`, `atender()`, `iniciarCorreioVoz()`
+3. **Navegador na Internet**
    - Métodos: `exibirPagina(String url)`, `adicionarNovaAba()`, `atualizarPagina()`
 
 ### Objetivo
@@ -23,23 +26,27 @@ Modelar e diagramar a representação UML do componente iPhone, abrangendo suas 
 ```mermaid
 classDiagram
     class ReprodutorMusical {
+	<<interface>>
         +ligar() : void
         +pausar() : void
-        +selecionarMusica() : void    }
+        +selecionarMusica(String musica) : void
+ }
     class AparelhoTelefonico {
-        +exibirPagina() : void
+	<<interface>>
+        +exibirPagina(String url) : void
         +adicionarNovaAba() : void
         +atualizarPagina() : void   
     }
-    class NavegadorInternet {
-        +ligar() : void
+    class  NavegadorInternet {
+	<<interface>>
+        +ligar(String numero) : void
         +atender() : void
         +iniciarCorreioVoz() : void    }
     class iPhone {
     }
-    ReprodutorMusical <-- iPhone
-    AparelhoTelefonico <--iPhone
-    NavegadorInternet <--iPhone
+    ReprodutorMusical <|-- iPhone
+    AparelhoTelefonico <|--iPhone
+    NavegadorInternet <|--iPhone
 ```
 
 ```bash
